@@ -25,6 +25,10 @@ export class DataBasePatenteRepository implements IPatenteRepository {
     await Knex('TABELA_PEDIDO').insert({
       ID_PATENTE: patente.ID,
     });
+
+    await Knex('TABELA_ANUIDADE').insert({
+      ID_PATENTE: patente.ID,
+    });
   }
 
   async updatePatente(): Promise<Patente[]> {
