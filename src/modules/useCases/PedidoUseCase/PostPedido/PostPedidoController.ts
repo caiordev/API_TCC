@@ -1,17 +1,18 @@
 import { Request, Response } from 'express';
-import { CreatePagamentoUseCase } from './PostPagamentoUseCase';
+import { CreatePedidoUseCase } from './PostPedidoUseCase';
 
-export class CreatePagamentoController {
-  constructor(private createPagamentoUseCase: CreatePagamentoUseCase) {}
+export class CreatePedidoController {
+  constructor(private createPedidoUseCase: CreatePedidoUseCase) {}
 
   async handle(request: Request, response: Response) {
-    const { VALOR } = request.body;
+    const { VALOR, ID } = request.body;
 
     try {
-      const registeredPagamento = await this.createPagamentoUseCase.execute({
+      const registeredPedido = await this.createPedidoUseCase.execute({
+        ID,
         VALOR,
       });
-      return response.status(201).json(registeredPagamento);
+      return response.status(201).json(registeredPedido);
     } catch (error) {
       if (error.message === 'User already exists!') {
         return response.status(409).json({

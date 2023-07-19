@@ -1,5 +1,5 @@
 import express from 'express';
-import { createPagamentoController } from '../../../modules/useCases/PagamentoUseCase/PostPagamento';
+import { createPedidoController } from '../../../modules/useCases/PedidoUseCase/PostPedido';
 import { createPatenteController } from '../../../modules/useCases/PatenteUseCase/PostPatente';
 
 const router = express.Router();
@@ -9,7 +9,7 @@ router.post('/patente', (request, response) => {
 });
 
 router.post('/pagamento', (request, response) => {
-  return createPagamentoController.handle(request, response);
+  return createPedidoController.handle(request, response);
 });
 
 export default router;
