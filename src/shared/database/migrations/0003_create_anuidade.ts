@@ -14,7 +14,7 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('CODIGOORD').notNullable();
     table.integer('VALORORD').notNullable();
     table.date('DATAPAGAMENTOORD').notNullable();
-    table.date('PROCESSOSEI').notNullable();
+    table.integer('PROCESSOSEI').notNullable();
   });
 }
 

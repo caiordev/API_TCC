@@ -16,7 +16,6 @@ export async function up(knex: Knex): Promise<void> {
       table.string('STATUS').notNullable();
       table.string('PROCESSO').notNullable();
       table.date('CONCESSÃO').nullable();
-      table.timestamp('created_at').defaultTo(knex.fn.now());
     })
     .then(() => {
       console.log('# Create table TABELA_PATENTE');

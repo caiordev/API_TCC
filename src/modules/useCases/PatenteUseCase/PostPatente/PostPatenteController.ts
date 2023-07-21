@@ -9,7 +9,7 @@ export class CreatePatenteController {
       ID,
       PROTOCOLO,
       NATUREZA,
-      // DEPOSITO,
+      //DEPOSITO,
       //TITULO,
       //INVENTORES,
       //IPC,

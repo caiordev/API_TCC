@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 
 export class Anuidade {
   public readonly ID?: string;
-  public readonly ID_PATENTE?: string;
+  public ID_PATENTE: string;
   public DataOrd1: Date;
   public DataOrd2: Date;
   public CodigoOrd: number;

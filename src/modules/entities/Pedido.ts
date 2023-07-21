@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 
 export class Pedido {
   public readonly ID?: string;
-  public readonly ID_PATENTE?: string;
+  public ID_PATENTE: string;
   public VALOR: number;
   public Codigo: number;
   public DataPag: Date;
