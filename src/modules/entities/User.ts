@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 
 export class User {
   public readonly ID?: string;
-  public NOME: Text;
+  public NOME: string;
   public EMAIL: string;
   public SENHA: string;
   public TIPO: string;

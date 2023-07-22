@@ -10,6 +10,10 @@ export class DataBaseUserRepository implements IUserRepository {
     return this.users;
   }
 
+  async save(user: User): Promise<void> {
+    await Knex('TABELA_USER').insert(user);
+  }
+
   async findByUser(email: string): Promise<User> {
     const users = await Knex('TABELA_USER');
     const user = users.find(e => e.EMAIL === email);

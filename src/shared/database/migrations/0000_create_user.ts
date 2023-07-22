@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
     .createTable('TABELA_USER', table => {
       table.string('ID').primary().index();
       table.text('NOME').notNullable();
-      table.string('EMAIl').notNullable();
+      table.string('EMAIl').notNullable().unique();
       table.string('SENHA').notNullable();
       table.integer('TIPO').notNullable();
     })
