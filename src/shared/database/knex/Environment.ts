@@ -2,14 +2,10 @@ import { Knex } from 'knex';
 import path from 'path';
 
 export const development: Knex.Config = {
-  client: 'mysql',
+  client: 'sqlite3',
   useNullAsDefault: true,
   connection: {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'caiodev400',
-    database: 'teste2',
+    filename: path.resolve(__dirname, '..', '..', '..', 'database.sqlite'),
   },
 
   migrations: {

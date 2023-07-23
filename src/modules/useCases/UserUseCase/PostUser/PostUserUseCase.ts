@@ -7,7 +7,7 @@ interface IUserRequest {
   NOME: string;
   EMAIL: string;
   SENHA: string;
-  TIPO: string;
+  TIPO: number;
 }
 
 class CreateUserUseCase {

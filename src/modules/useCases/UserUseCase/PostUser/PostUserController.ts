@@ -1,10 +1,10 @@
-import { Request, response, Response } from 'express';
+import { Request, Response } from 'express';
 import { CreateUserUseCase } from './PostUserUseCase';
 
 export class CreateUserController {
   constructor(private createUserUseCase: CreateUserUseCase) {}
 
-  async handle(request: Request, responser: Response) {
+  async handle(request: Request, response: Response) {
     const { NOME, EMAIL, SENHA, TIPO } = request.body;
 
     try {

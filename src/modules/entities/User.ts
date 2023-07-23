@@ -5,7 +5,7 @@ export class User {
   public NOME: string;
   public EMAIL: string;
   public SENHA: string;
-  public TIPO: string;
+  public TIPO: number;
 
   constructor(props: Omit<User, 'ID'>, ID?: string) {
     Object.assign(this, props);

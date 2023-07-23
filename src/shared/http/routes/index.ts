@@ -13,11 +13,11 @@ import { getAnuidadeController } from '../../../modules/useCases/AnuidadeUseCase
 
 export const router = express.Router();
 
-router.post('/patente', (request, response) => {
-  return createPatenteController.handle(request, response);
-});
 router.get('/patente', (request, response) => {
   return getPatenteController.handle(request, response);
+});
+router.post('/patente', (request, response) => {
+  return createPatenteController.handle(request, response);
 });
 
 router.post('/pedido', (request, response) => {
