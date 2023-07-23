@@ -11,6 +11,11 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
     await Knex('TABELA_ANUIDADE').insert(anuidade);
   }
 
+  async getAnuidade(): Promise<Anuidade[]> {
+    this.anuidades = await Knex('TABELA_ANUIDADE');
+    return this.anuidades;
+  }
+
   async findById(id: string): Promise<Anuidade> {
     const anuidades = await Knex('TABELA_ANUIDADE');
     const anuidade = anuidades.find(e => {

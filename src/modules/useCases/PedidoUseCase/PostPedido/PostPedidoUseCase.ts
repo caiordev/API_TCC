@@ -1,24 +1,38 @@
 import { Pedido } from '../../../entities/Pedido';
 import { IPedidoRepository } from '../../../repositories/IPedidoRepository';
-import AppError from '../../../../shared/http/errors/AppError';
 
 interface IPedidoRequest {
-  ID: string;
+  ID?: string;
+  ID_PATENTE: string;
   VALOR: number;
+  Codigo: number;
+  DataPag: Date;
+  ProcessoSei: number;
 }
 
 class CreatePedidoUseCase {
   constructor(private pedidoRepository: IPedidoRepository) {}
 
-  async execute({ ID, VALOR }: IPedidoRequest) {
+  async execute({
+    ID,
+    ID_PATENTE,
+    VALOR,
+    Codigo,
+    DataPag,
+    ProcessoSei,
+  }: IPedidoRequest) {
     const pedidoAlreadyExists = await this.pedidoRepository.findById(ID);
 
     if (pedidoAlreadyExists) {
-      throw new AppError('User already exists!');
+      throw new Error('User already exists!');
     }
 
     const pedido = new Pedido({
+      ID_PATENTE,
       VALOR,
+      Codigo,
+      DataPag,
+      ProcessoSei,
     });
 
     await this.pedidoRepository.save(pedido);

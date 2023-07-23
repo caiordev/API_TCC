@@ -6,36 +6,34 @@ export class CreatePatenteController {
 
   async handle(request: Request, response: Response) {
     const {
-      ID,
       PROTOCOLO,
       NATUREZA,
-      //DEPOSITO,
-      //TITULO,
-      //INVENTORES,
-      //IPC,
-      //CPC,
-      //COTITULAR,
-      //QREIVIND,
-      //STATUS,
-      //PROCESSO,
-      //CONCESSAO,
+      DEPOSITO,
+      TITULO,
+      INVENTORES,
+      IPC,
+      CPC,
+      COTITULAR,
+      QREIVIND,
+      STATUS,
+      PROCESSO,
+      CONCESSAO,
     } = request.body;
 
     try {
       const registeredPatente = await this.createPatenteUseCase.execute({
-        ID,
         PROTOCOLO,
         NATUREZA,
-        //DEPOSITO,
-        //TITULO,
-        //INVENTORES,
-        //IPC,
-        //CPC,
-        //COTITULAR,
-        //QREIVIND,
-        //STATUS,
-        //PROCESSO,
-        //CONCESSAO,
+        DEPOSITO,
+        TITULO,
+        INVENTORES,
+        IPC,
+        CPC,
+        COTITULAR,
+        QREIVIND,
+        STATUS,
+        PROCESSO,
+        CONCESSAO,
       });
       return response.status(201).json(registeredPatente);
     } catch (error) {

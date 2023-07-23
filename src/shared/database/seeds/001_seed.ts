@@ -17,7 +17,7 @@ export async function seed(knex: Knex): Promise<void> {
       QREIVIND: 2,
       STATUS: 'Em análise',
       PROCESSO: '123.456.789/2022',
-      CONCESSÃO: null,
+      CONCESSÃO: '2022-05-01',
     },
     {
       ID: '2',
@@ -26,7 +26,7 @@ export async function seed(knex: Knex): Promise<void> {
       DEPÓSITO: '2022-02-01',
       TITULO: 'Uma nova máquina',
       INVENTORES: 'Pedro Santos',
-      IPC: null,
+      IPC: 'B23Q 11/00',
       CPC: 'B23Q 11/00',
       COTITULAR: 'Empresa Y',
       QREIVIND: 1,

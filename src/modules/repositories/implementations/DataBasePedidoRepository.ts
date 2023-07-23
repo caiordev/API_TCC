@@ -11,6 +11,11 @@ export class DataBasePedidoRepository implements IPedidoRepository {
     await Knex('TABELA_PEDIDO').insert(pedido);
   }
 
+  async getPedido(): Promise<Pedido[]> {
+    this.pedidos = await Knex('TABELA_PEDIDO');
+    return this.pedidos;
+  }
+
   async findById(id: string): Promise<Pedido> {
     const pedidos = await Knex('TABELA_PEDIDO');
     const pedido = pedidos.find(e => {
