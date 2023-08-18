@@ -7,23 +7,23 @@ export class CreateAnuidadeController {
   async handle(request: Request, response: Response) {
     const {
       ID_PATENTE,
-      DataOrd1,
-      DataOrd2,
-      CodigoOrd,
-      ValorOrd,
-      DataPagamentoOrd,
-      ProcessoSei,
+      DATAORD1,
+      DATAORD2,
+      CODIGOORD,
+      VALORORD,
+      DATAPAGAMENTOORD,
+      PROCESSOSEI,
     } = request.body;
 
     try {
       const registeredAnuidade = await this.createAnuidadeUseCase.execute({
         ID_PATENTE,
-        DataOrd1,
-        DataOrd2,
-        CodigoOrd,
-        ValorOrd,
-        DataPagamentoOrd,
-        ProcessoSei,
+        DATAORD1,
+        DATAORD2,
+        CODIGOORD,
+        VALORORD,
+        DATAPAGAMENTOORD,
+        PROCESSOSEI,
       });
       return response.status(201).json(registeredAnuidade);
     } catch (error) {

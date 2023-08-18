@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<void> {
       table.string('ID').primary().index();
       table.integer('PROTOCOLO').notNullable();
       table.string('NATUREZA').notNullable();
-      table.date('DEPÓSITO').notNullable();
+      table.date('DEPOSITO').notNullable();
       table.string('TITULO').notNullable();
       table.string('INVENTORES').notNullable();
       table.string('IPC').nullable();
@@ -15,7 +15,7 @@ export async function up(knex: Knex): Promise<void> {
       table.integer('QREIVIND').notNullable();
       table.string('STATUS').notNullable();
       table.string('PROCESSO').notNullable();
-      table.date('CONCESSÃO').nullable();
+      table.date('CONCESSAO').nullable();
     })
     .then(() => {
       console.log('# Create table TABELA_PATENTE');

@@ -20,7 +20,12 @@ export class DataBasePatenteRepository implements IPatenteRepository {
   }
 
   async save(patente: Patente): Promise<void> {
-    await Knex('TABELA_PATENTE').insert(patente);
+    console.log('salvando patente');
+    try {
+      await Knex('TABELA_PATENTE').insert(patente);
+    } catch (error) {
+      console.error('Error while saving patente:', error);
+    }
   }
 
   async updatePatente(): Promise<Patente[]> {

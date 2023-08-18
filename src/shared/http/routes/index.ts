@@ -10,6 +10,8 @@ import { getExameController } from '../../../modules/useCases/ExameUseCase/GetEx
 import { createUserController } from '../../../modules/useCases/UserUseCase/PostUser';
 import { createAnuidadeController } from '../../../modules/useCases/AnuidadeUseCase/PostAnuidade';
 import { getAnuidadeController } from '../../../modules/useCases/AnuidadeUseCase/GetAnuidade';
+import { updateAnuidadeController } from '../../../modules/useCases/AnuidadeUseCase/UpdateAnuidade';
+import { deleteAnuidadeController } from '../../../modules/useCases/AnuidadeUseCase/DeleteAnuidade';
 
 export const router = express.Router();
 
@@ -39,6 +41,14 @@ router.post('/anuidade', (request, response) => {
 });
 router.get('/anuidade', (request, response) => {
   return getAnuidadeController.handle(request, response);
+});
+
+router.put('/anuidade/:ID', (request, response) => {
+  return updateAnuidadeController.handle(request, response);
+});
+
+router.delete('/anuidade/:ID', (request, response) => {
+  return deleteAnuidadeController.handle(request, response);
 });
 
 router.post('/user', (request, response) => {

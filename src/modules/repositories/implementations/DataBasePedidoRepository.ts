@@ -8,7 +8,12 @@ export class DataBasePedidoRepository implements IPedidoRepository {
   public pedidos: Pedido[];
 
   async save(pedido: Pedido): Promise<void> {
-    await Knex('TABELA_PEDIDO').insert(pedido);
+    console.log('salvando pedido');
+    try {
+      await Knex('TABELA_PEDIDO').insert(pedido);
+    } catch (error) {
+      console.error('Error while saving pedido:', error);
+    }
   }
 
   async getPedido(): Promise<Pedido[]> {

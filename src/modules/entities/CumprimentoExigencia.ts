@@ -1,14 +1,16 @@
 import { v4 } from 'uuid';
 
-export class Pedido {
+export class CumprimentoExigencia {
   public readonly ID?: string;
   public ID_PATENTE: string;
   public VALOR: number;
-  public CODIGO: number;
-  public DATAPAG: Date;
+  public SERVICO: string;
+  public PRAZO: Date;
+  public PAGAMENTO: Date;
   public PROCESSOSEI: number;
+  public TIPO: string;
 
-  constructor(props: Omit<Pedido, 'ID'>, ID?: string) {
+  constructor(props: Omit<CumprimentoExigencia, 'ID'>, ID?: string) {
     Object.assign(this, props);
     if (!ID) {
       this.ID = v4();

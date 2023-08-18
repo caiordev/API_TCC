@@ -17,6 +17,11 @@ export class DataBaseExameRepository implements IExameRepository {
   }
 
   async save(exame: Exame): Promise<void> {
-    await Knex('TABELA_EXAME').insert(exame);
+    console.log('Salvando exame');
+    try {
+      await Knex('TABELA_EXAME').insert(exame);
+    } catch (error) {
+      console.error('Error while saving exame:', error);
+    }
   }
 }

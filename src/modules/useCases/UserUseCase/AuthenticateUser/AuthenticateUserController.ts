@@ -22,7 +22,6 @@ export class AuthenticateUserController {
       // Retorna o token de autenticação no corpo da resposta com o status 201 (Created)
       return response.status(201).json(token);
     } catch (error) {
-      // Se ocorrer um erro com a mensagem "User or password incorrect!", retorna um JSON com a mensagem de erro e o status 409 (Conflict)
       if (error.message === 'User or password incorrect!') {
         return response.status(409).json({
           message: 'User or password incorrect!',

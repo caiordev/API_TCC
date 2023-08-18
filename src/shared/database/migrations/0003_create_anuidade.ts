@@ -19,7 +19,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.dropTable('TABELA_PEDIDO').then(() => {
-    console.log('# Dropped table TABELA_PEDIDO');
+  return knex.schema.dropTable('TABELA_ANUIDADE').then(() => {
+    console.log('# Dropped table TABELA_ANUIDADE');
   });
 }
