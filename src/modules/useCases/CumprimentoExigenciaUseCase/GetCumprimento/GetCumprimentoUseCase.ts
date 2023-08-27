@@ -6,6 +6,8 @@ export class GetCumprimentoUseCase {
   ) {}
 
   async execute() {
-    return await this.cumprimentoExigenciaRepository.getCumprimentoExigencia();
+    const listCumprimento =
+      await this.cumprimentoExigenciaRepository.getCumprimentoExigencia();
+    return listCumprimento;
   }
 }

@@ -1,3 +1,4 @@
+import { generateKeySync } from 'crypto';
 import { Knex } from '../../../shared/database/knex';
 
 import { Pedido } from '../../entities/Pedido';
@@ -27,5 +28,31 @@ export class DataBasePedidoRepository implements IPedidoRepository {
       e.ID === id;
     });
     return pedido;
+  }
+
+  async updatePatente(
+    ID: string,
+    VALOR: number,
+    CODIGO: number,
+    DATAPAG: Date,
+    PROCESSOSEI: number,
+  ): Promise<Pedido[]> {
+    await Knex('TABELA_PEDIDO')
+      .update({
+        VALOR: VALOR,
+        CODIGO: CODIGO,
+        DATAPAG: DATAPAG,
+        PROCESSOSEI: PROCESSOSEI,
+      })
+      .where({ ID: ID });
+
+    this.pedidos = await Knex('TABELA_PEDIDO');
+    return this.pedidos;
+  }
+
+  async deletePatente(ID: string): Promise<Pedido[]> {
+    await Knex('TABELA_PEDIDO').delete().where({ ID });
+    this.pedidos = await Knex('TABELA_PEDIDO');
+    return this.pedidos;
   }
 }

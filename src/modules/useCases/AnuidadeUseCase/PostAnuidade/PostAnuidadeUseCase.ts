@@ -12,7 +12,7 @@ interface IAnuidadeRequest {
   PROCESSOSEI: number;
 }
 
-class CreateAnuidadeUseCase {
+export class CreateAnuidadeUseCase {
   constructor(private anuidadeRepository: IAnuidadeRepository) {}
 
   async execute({
@@ -46,5 +46,3 @@ class CreateAnuidadeUseCase {
     return anuidade;
   }
 }
-
-export { CreateAnuidadeUseCase };

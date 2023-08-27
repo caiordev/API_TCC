@@ -5,9 +5,9 @@ interface IPedidoRequest {
   ID?: string;
   ID_PATENTE: string;
   VALOR: number;
-  Codigo: number;
-  DataPag: Date;
-  ProcessoSei: number;
+  CODIGO: number;
+  DATAPAG: Date;
+  PROCESSOSEI: number;
 }
 
 class CreatePedidoUseCase {
@@ -17,9 +17,9 @@ class CreatePedidoUseCase {
     ID,
     ID_PATENTE,
     VALOR,
-    Codigo,
-    DataPag,
-    ProcessoSei,
+    CODIGO,
+    DATAPAG,
+    PROCESSOSEI,
   }: IPedidoRequest) {
     const pedidoAlreadyExists = await this.pedidoRepository.findById(ID);
 
@@ -30,9 +30,9 @@ class CreatePedidoUseCase {
     const pedido = new Pedido({
       ID_PATENTE,
       VALOR,
-      Codigo,
-      DataPag,
-      ProcessoSei,
+      CODIGO,
+      DATAPAG,
+      PROCESSOSEI,
     });
 
     await this.pedidoRepository.save(pedido);

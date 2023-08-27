@@ -2,7 +2,7 @@ import { Knex } from '../../../shared/database/knex';
 import { CumprimentoExigencia } from '../../entities/CumprimentoExigencia';
 import { ICumprimentoExigenciaRepository } from '../ICumprimentoExigenciaRepository';
 
-export class DataBaseCumprimentoExigencia
+export class DataBaseCumprimentoExigenciaRepository
   implements ICumprimentoExigenciaRepository
 {
   public cumprimentoexigencias: CumprimentoExigencia[];

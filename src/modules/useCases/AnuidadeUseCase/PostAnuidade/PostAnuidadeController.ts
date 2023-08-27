@@ -4,7 +4,7 @@ import { CreateAnuidadeUseCase } from './PostAnuidadeUseCase';
 export class CreateAnuidadeController {
   constructor(private createAnuidadeUseCase: CreateAnuidadeUseCase) {}
 
-  async handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response): Promise<Response> {
     const {
       ID_PATENTE,
       DATAORD1,

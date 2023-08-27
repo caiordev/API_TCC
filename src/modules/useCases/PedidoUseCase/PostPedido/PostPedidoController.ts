@@ -5,15 +5,15 @@ export class CreatePedidoController {
   constructor(private createPedidoUseCase: CreatePedidoUseCase) {}
 
   async handle(request: Request, response: Response) {
-    const { ID_PATENTE, VALOR, Codigo, DataPag, ProcessoSei } = request.body;
+    const { ID_PATENTE, VALOR, CODIGO, DATAPAG, PROCESSOSEI } = request.body;
 
     try {
       const registeredPedido = await this.createPedidoUseCase.execute({
         ID_PATENTE,
         VALOR,
-        Codigo,
-        DataPag,
-        ProcessoSei,
+        CODIGO,
+        DATAPAG,
+        PROCESSOSEI,
       });
       return response.status(201).json(registeredPedido);
     } catch (error) {

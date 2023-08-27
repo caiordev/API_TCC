@@ -8,7 +8,8 @@ export async function up(knex: Knex): Promise<void> {
       .references('ID')
       .inTable('TABELA_PATENTE')
       .index()
-      .onDelete('CASCADE');
+      .onDelete('CASCADE')
+      .unique();
     table.integer('VALOR').notNullable();
     table.integer('CODIGO').notNullable();
     table.date('DATAPAG').notNullable();

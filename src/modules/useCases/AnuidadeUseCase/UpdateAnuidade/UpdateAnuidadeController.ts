@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { UpdateAnuidadeUseCase } from './UpdateAnuidadeUseCase';
 
 export class UpdateAnuidadeController {
-  constructor(private updadeAnuidadeUseCase: UpdateAnuidadeUseCase) {}
+  constructor(private updateAnuidadeUseCase: UpdateAnuidadeUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const { ID } = request.params;
@@ -16,7 +16,7 @@ export class UpdateAnuidadeController {
     } = request.body;
 
     try {
-      const anuidade = await this.updadeAnuidadeUseCase.execute({
+      const anuidade = await this.updateAnuidadeUseCase.execute({
         ID,
         DATAORD1,
         DATAORD2,
