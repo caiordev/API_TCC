@@ -12,6 +12,7 @@ export interface IAnuidadeRepository {
     VALORORD: number,
     DATAPAGAMENTOORD: Date,
     PROCESSOSEI: number,
+    STATUS: string,
   ): Promise<Anuidade[]>;
   deleteAnuidade(ID: string): Promise<Anuidade[]>;
 }

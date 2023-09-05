@@ -9,6 +9,7 @@ export class Anuidade {
   public VALORORD: number;
   public DATAPAGAMENTOORD: Date;
   public PROCESSOSEI: number;
+  public STATUS: string;
 
   constructor(props: Omit<Anuidade, 'ID'>, ID?: string) {
     Object.assign(this, props);

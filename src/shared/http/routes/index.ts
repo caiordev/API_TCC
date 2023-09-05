@@ -14,7 +14,8 @@ import { updateAnuidadeController } from '../../../modules/useCases/AnuidadeUseC
 import { deleteAnuidadeController } from '../../../modules/useCases/AnuidadeUseCase/DeleteAnuidade';
 import { deleteExameController } from '../../../modules/useCases/ExameUseCase/DeleteExame';
 import { updateUserController } from '../../../modules/useCases/UserUseCase/UpdateUser';
-import { testeController } from '../../../modules/useCases/ConsultasUseCase/Teste';
+import { testeController } from '../../../modules/useCases/ConsultasUseCase/Patente';
+import { anuidadeConsultaController } from '../../../modules/useCases/ConsultasUseCase/anuidade';
 
 export const router = express.Router();
 
@@ -78,8 +79,12 @@ router.get('/verify', ensureAuthenticated, (request, response) => {
 });
 
 //Teste de consulta
-router.get('/test', (request, response) => {
+router.get('/consultaPatente', (request, response) => {
   return testeController.handle(request, response);
+});
+
+router.get('/consultaAnuidade', (request, response) => {
+  return anuidadeConsultaController.handle(request, response);
 });
 
 module.exports = { router };

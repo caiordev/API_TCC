@@ -5,8 +5,16 @@ export class CreateExameController {
   constructor(private createExameUseCase: CreateExameUseCase) {}
 
   async handle(request: Request, response: Response) {
-    const { ID_PATENTE, VALOR, SERVICO, PRAZO, PAGAMENTO, PROCESSOSEI, TIPO } =
-      request.body;
+    const {
+      ID_PATENTE,
+      VALOR,
+      SERVICO,
+      PRAZO,
+      PAGAMENTO,
+      PROCESSOSEI,
+      TIPO,
+      STATUS,
+    } = request.body;
 
     try {
       const registeredExame = await this.createExameUseCase.execute({
@@ -17,6 +25,7 @@ export class CreateExameController {
         PAGAMENTO,
         PROCESSOSEI,
         TIPO,
+        STATUS,
       });
 
       return response.status(201).json(registeredExame);

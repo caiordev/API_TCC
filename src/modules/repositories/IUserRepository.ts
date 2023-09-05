@@ -1,9 +1,8 @@
 import { User } from '../entities/User';
 
 export interface IUserRepository {
-  getUser(): Promise<User[]>;
   save(user: User): Promise<void>;
-  findByUser(email: string): Promise<User>;
+  findByUser(ID: string): Promise<User>;
   updateUser(
     ID: string,
     NOME: string,

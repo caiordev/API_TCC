@@ -8,7 +8,6 @@ export class CumprimentoExigencia {
   public PRAZO: Date;
   public PAGAMENTO: Date;
   public PROCESSOSEI: number;
-  public TIPO: string;
 
   constructor(props: Omit<CumprimentoExigencia, 'ID'>, ID?: string) {
     Object.assign(this, props);

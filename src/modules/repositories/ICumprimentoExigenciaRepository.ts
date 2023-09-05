@@ -11,7 +11,6 @@ export interface ICumprimentoExigenciaRepository {
     PRAZO: Date,
     PAGAMENTO: Date,
     PROCESSOSEI: number,
-    TIPO: string,
   ): Promise<CumprimentoExigencia[]>;
   deleteCumprimentoExigencia(ID: string): Promise<CumprimentoExigencia[]>;
 }

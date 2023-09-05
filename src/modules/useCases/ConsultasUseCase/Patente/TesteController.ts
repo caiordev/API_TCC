@@ -5,17 +5,20 @@ export class TesteController {
   constructor(private testUseCase: TesteUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { TITULO } = request.query;
-
-    if (typeof TITULO !== 'string') {
-      // Trate o caso em que TITULO não é uma string
-      return response.status(400).json({
-        message: 'TITULO deve ser uma string.',
-      });
-    }
+    const { TITULO, STATUS, PROTOCOLO, DEPOSITO } = request.query as {
+      TITULO?: string;
+      STATUS?: string;
+      PROTOCOLO?: number;
+      DEPOSITO?: string;
+    };
 
     try {
-      const consulta = await this.testUseCase.execute({ TITULO });
+      const consulta = await this.testUseCase.execute({
+        STATUS,
+        PROTOCOLO,
+        DEPOSITO,
+        TITULO,
+      });
 
       response.status(201).json(consulta);
     } catch (error) {

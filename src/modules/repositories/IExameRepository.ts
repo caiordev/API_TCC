@@ -12,6 +12,7 @@ export interface IExameRepository {
     PAGAMENTO: Date,
     PROCESSOSEI: number,
     TIPO: string,
+    STATUS: string,
   ): Promise<Exame[]>;
   deleteExame(ID: string): Promise<Exame[]>;
 }

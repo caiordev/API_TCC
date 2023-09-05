@@ -10,6 +10,7 @@ interface IExameRequest {
   PAGAMENTO: Date;
   PROCESSOSEI: number;
   TIPO: string;
+  STATUS: string;
 }
 
 class CreateExameUseCase {
@@ -24,6 +25,7 @@ class CreateExameUseCase {
     PAGAMENTO,
     PROCESSOSEI,
     TIPO,
+    STATUS,
   }: IExameRequest) {
     const exameAlreadyExists = await this.exameRepository.findById(ID);
 
@@ -39,6 +41,7 @@ class CreateExameUseCase {
       PAGAMENTO,
       PROCESSOSEI,
       TIPO,
+      STATUS,
     });
 
     await this.exameRepository.save(exame);

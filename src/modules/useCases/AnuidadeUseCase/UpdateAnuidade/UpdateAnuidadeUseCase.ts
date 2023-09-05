@@ -8,6 +8,7 @@ interface IAnuidadeRequest {
   VALORORD: number;
   DATAPAGAMENTOORD: Date;
   PROCESSOSEI: number;
+  STATUS: string;
 }
 
 export class UpdateAnuidadeUseCase {
@@ -21,6 +22,7 @@ export class UpdateAnuidadeUseCase {
     VALORORD,
     DATAPAGAMENTOORD,
     PROCESSOSEI,
+    STATUS,
   }: IAnuidadeRequest) {
     const updatedAnuidade = await this.anuidadeRepository.updateAnuidade(
       ID,
@@ -30,6 +32,7 @@ export class UpdateAnuidadeUseCase {
       VALORORD,
       DATAPAGAMENTOORD,
       PROCESSOSEI,
+      STATUS,
     );
     return updatedAnuidade;
   }

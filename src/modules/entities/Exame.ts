@@ -9,6 +9,7 @@ export class Exame {
   public PAGAMENTO: Date;
   public PROCESSOSEI: number;
   public TIPO: string;
+  public STATUS: string;
 
   constructor(props: Omit<Exame, 'ID'>, ID?: string) {
     Object.assign(this, props);

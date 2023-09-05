@@ -15,7 +15,6 @@ export class PostCumprimentoController {
         PRAZO,
         PAGAMENTO,
         PROCESSOSEI,
-        TIPO,
       });
 
       return response.status(201).json(registeredCumprimento);

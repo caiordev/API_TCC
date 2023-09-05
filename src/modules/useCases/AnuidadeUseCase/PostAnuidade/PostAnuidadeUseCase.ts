@@ -10,6 +10,7 @@ interface IAnuidadeRequest {
   VALORORD: number;
   DATAPAGAMENTOORD: Date;
   PROCESSOSEI: number;
+  STATUS: string;
 }
 
 export class CreateAnuidadeUseCase {
@@ -24,6 +25,7 @@ export class CreateAnuidadeUseCase {
     VALORORD,
     DATAPAGAMENTOORD,
     PROCESSOSEI,
+    STATUS,
   }: IAnuidadeRequest) {
     const anuidadeAlreadyExits = await this.anuidadeRepository.findById(ID);
 
@@ -39,6 +41,7 @@ export class CreateAnuidadeUseCase {
       VALORORD,
       DATAPAGAMENTOORD,
       PROCESSOSEI,
+      STATUS,
     });
 
     await this.anuidadeRepository.save(anuidade);

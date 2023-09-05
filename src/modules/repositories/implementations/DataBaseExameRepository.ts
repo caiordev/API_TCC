@@ -33,6 +33,7 @@ export class DataBaseExameRepository implements IExameRepository {
     PAGAMENTO: Date,
     PROCESSOSEI: number,
     TIPO: string,
+    STATUS: string,
   ): Promise<Exame[]> {
     await Knex('TABELA_EXAME')
       .update({
@@ -42,6 +43,7 @@ export class DataBaseExameRepository implements IExameRepository {
         PAGAMENTO: PAGAMENTO,
         PROCESSOSEI: PROCESSOSEI,
         TIPO: TIPO,
+        STATUS: STATUS,
       })
       .where({ ID: ID });
 

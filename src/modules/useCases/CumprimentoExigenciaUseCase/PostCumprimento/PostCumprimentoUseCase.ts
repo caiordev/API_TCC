@@ -10,7 +10,6 @@ interface ICumprimentoRequest {
   PRAZO: Date;
   PAGAMENTO: Date;
   PROCESSOSEI: number;
-  TIPO: string;
 }
 
 export class PostCumprimentoUseCase {
@@ -26,7 +25,6 @@ export class PostCumprimentoUseCase {
     PRAZO,
     PAGAMENTO,
     PROCESSOSEI,
-    TIPO,
   }: ICumprimentoRequest) {
     const cumprimentoAlreadyExits =
       await this.cumprimentoExigenciaRepository.findById(ID);
@@ -41,7 +39,6 @@ export class PostCumprimentoUseCase {
       PRAZO,
       PROCESSOSEI,
       SERVICO,
-      TIPO,
       VALOR,
     });
 

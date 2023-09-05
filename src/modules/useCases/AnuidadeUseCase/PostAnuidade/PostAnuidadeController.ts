@@ -13,6 +13,7 @@ export class CreateAnuidadeController {
       VALORORD,
       DATAPAGAMENTOORD,
       PROCESSOSEI,
+      STATUS,
     } = request.body;
 
     try {
@@ -24,6 +25,7 @@ export class CreateAnuidadeController {
         VALORORD,
         DATAPAGAMENTOORD,
         PROCESSOSEI,
+        STATUS,
       });
       return response.status(201).json(registeredAnuidade);
     } catch (error) {

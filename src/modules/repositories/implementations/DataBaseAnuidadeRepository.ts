@@ -37,6 +37,7 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
     VALORORD: number,
     DATAPAGAMENTOORD: Date,
     PROCESSOSEI: number,
+    STATUS: string,
   ): Promise<Anuidade[]> {
     await Knex('TABELA_ANUIDADE')
       .update({
@@ -47,6 +48,7 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
         VALORORD: VALORORD,
         DATAPAGAMENTOORD: DATAPAGAMENTOORD,
         PROCESSOSEI: PROCESSOSEI,
+        STATUS: STATUS,
       })
       .where({ ID: ID });
 
