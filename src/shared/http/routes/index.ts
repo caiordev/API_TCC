@@ -16,9 +16,13 @@ import { deleteExameController } from '../../../modules/useCases/ExameUseCase/De
 import { updateUserController } from '../../../modules/useCases/UserUseCase/UpdateUser';
 import { testeController } from '../../../modules/useCases/ConsultasUseCase/Patente';
 import { anuidadeConsultaController } from '../../../modules/useCases/ConsultasUseCase/anuidade';
+import { deleteUserController } from '../../../modules/useCases/UserUseCase/DeleteUser';
+import { deletePedidoController } from '../../../modules/useCases/PedidoUseCase/DeletePedido';
+import { deletePatenteController } from '../../../modules/useCases/PatenteUseCase/DeletePatente';
 
 export const router = express.Router();
 
+//Patente
 router.get('/patente', (request, response) => {
   return getPatenteController.handle(request, response);
 });
@@ -26,7 +30,7 @@ router.post('/patente', (request, response) => {
   return createPatenteController.handle(request, response);
 });
 router.delete('/patente/:ID', (request, response) => {
-  return createPatenteController.handle(request, response);
+  return deletePatenteController.handler(request, response);
 });
 
 router.post('/pedido', (request, response) => {
@@ -34,6 +38,9 @@ router.post('/pedido', (request, response) => {
 });
 router.get('/pedido', (request, response) => {
   return getPedidoController.handle(request, response);
+});
+router.delete('/pedido/:ID', (request, response) => {
+  return deletePedidoController.handler(request, response);
 });
 
 router.post('/exame', (request, response) => {
@@ -53,7 +60,6 @@ router.post('/anuidade', (request, response) => {
 router.get('/anuidade', (request, response) => {
   return getAnuidadeController.handle(request, response);
 });
-
 router.put('/anuidade/:ID', (request, response) => {
   return updateAnuidadeController.handle(request, response);
 });
@@ -68,6 +74,10 @@ router.post('/user', (request, response) => {
 
 router.put('/user/:ID', (request, response) => {
   return updateUserController.handle(request, response);
+});
+
+router.delete('user/:ID', (request, response) => {
+  return deleteUserController.handler(request, response);
 });
 
 router.post('/login', (request, response) => {
