@@ -5,18 +5,21 @@ export class TesteController {
   constructor(private testUseCase: TesteUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { TITULO, STATUS, PROTOCOLO, DEPOSITO } = request.query as {
-      TITULO?: string;
-      STATUS?: string;
-      PROTOCOLO?: number;
-      DEPOSITO?: string;
-    };
+    const { TITULO, STATUS, PROTOCOLO, DEPOSITO1, DEPOSITO2 } =
+      request.query as {
+        TITULO?: string;
+        STATUS?: string;
+        PROTOCOLO?: number;
+        DEPOSITO1?: string;
+        DEPOSITO2?: string;
+      };
 
     try {
       const consulta = await this.testUseCase.execute({
         STATUS,
         PROTOCOLO,
-        DEPOSITO,
+        DEPOSITO1,
+        DEPOSITO2,
         TITULO,
       });
 

@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 
 export class Patente {
   public readonly ID?: string;
-  public PROTOCOLO: number;
+  public PROTOCOLO: string;
   public NATUREZA: string;
   public DEPOSITO?: Date;
   public TITULO: string;
@@ -11,7 +11,7 @@ export class Patente {
   public CPC?: string;
   public COTITULAR: string;
   public QREIVIND: number;
-  public STATUS: string;
+  public STATUS?: string;
   public PROCESSO: string;
   public CONCESSAO?: Date;
 

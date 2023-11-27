@@ -3,7 +3,7 @@ import { IPatenteRepository } from '../../../repositories/IPatenteRepository';
 
 interface IPatenteRequest {
   ID?: string;
-  PROTOCOLO: number;
+  PROTOCOLO: string;
   NATUREZA: string;
   DEPOSITO?: Date;
   TITULO: string;

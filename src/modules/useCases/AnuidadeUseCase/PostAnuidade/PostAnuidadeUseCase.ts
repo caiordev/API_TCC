@@ -1,7 +1,7 @@
 import { IAnuidadeRepository } from '../../../repositories/IAnuidadeRepository';
 import { Anuidade } from '../../../entities/Anuidade';
 
-interface IAnuidadeRequest {
+export interface IAnuidadeRequest {
   ID?: string;
   ID_PATENTE: string;
   DATAORD1: Date;

@@ -18,9 +18,9 @@ export class DataBaseUserRepository implements IUserRepository {
     }
   }
 
-  async findByUser(ID: string): Promise<User> {
+  async findByUser(email: string): Promise<User> {
     const users = await Knex('TABELA_USER');
-    const user = users.find(e => e.ID === ID);
+    const user = users.find(e => e.EMAIL === email);
     return user;
   }
 

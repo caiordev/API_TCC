@@ -15,7 +15,7 @@ export class DataBasePatenteRepository implements IPatenteRepository {
   async findById(id: string): Promise<Patente> {
     const patentes = await Knex('TABELA_PATENTE');
     const patente = patentes.find(e => {
-      e.ID === id;
+      return e.ID === id;
     });
     return patente;
   }
@@ -31,7 +31,7 @@ export class DataBasePatenteRepository implements IPatenteRepository {
 
   async updatePatente(
     ID: string,
-    PROTOCOLO: number,
+    PROTOCOLO: string,
     NATUREZA: string,
     DEPOSITO: Date,
     TITULO: string,

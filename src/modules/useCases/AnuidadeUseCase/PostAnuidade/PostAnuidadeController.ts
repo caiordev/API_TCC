@@ -1,10 +1,14 @@
 import { Request, Response } from 'express';
 import { CreateAnuidadeUseCase } from './PostAnuidadeUseCase';
+import { IAnuidadeRequest } from './PostAnuidadeUseCase';
 
 export class CreateAnuidadeController {
   constructor(private createAnuidadeUseCase: CreateAnuidadeUseCase) {}
 
-  async handle(request: Request, response: Response): Promise<Response> {
+  async handle(
+    request: Request<{}, {}, IAnuidadeRequest>,
+    response: Response,
+  ): Promise<Response> {
     const {
       ID_PATENTE,
       DATAORD1,
@@ -13,7 +17,7 @@ export class CreateAnuidadeController {
       VALORORD,
       DATAPAGAMENTOORD,
       PROCESSOSEI,
-      STATUS,
+      STATUS
     } = request.body;
 
     try {

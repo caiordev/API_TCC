@@ -19,6 +19,7 @@ import { anuidadeConsultaController } from '../../../modules/useCases/ConsultasU
 import { deleteUserController } from '../../../modules/useCases/UserUseCase/DeleteUser';
 import { deletePedidoController } from '../../../modules/useCases/PedidoUseCase/DeletePedido';
 import { deletePatenteController } from '../../../modules/useCases/PatenteUseCase/DeletePatente';
+import { getByIdPatenteController } from '../../../modules/useCases/PatenteUseCase/GetByIdPatente';
 
 export const router = express.Router();
 
@@ -26,9 +27,14 @@ export const router = express.Router();
 router.get('/patente', (request, response) => {
   return getPatenteController.handle(request, response);
 });
+router.get('/patente/:ID', (request, response) => {
+  return getByIdPatenteController.handle(request, response);
+});
+
 router.post('/patente', (request, response) => {
   return createPatenteController.handle(request, response);
 });
+
 router.delete('/patente/:ID', (request, response) => {
   return deletePatenteController.handler(request, response);
 });

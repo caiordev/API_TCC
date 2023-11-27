@@ -5,35 +5,54 @@ import { Patente } from '../../entities/Patente';
 export class DataBaseConsultasRepository {
   async getPatente(
     STATUS: string,
-    PROTOCOLO: number,
-    DEPOSITO: string,
+    PROTOCOLO: string,
+    DEPOSITO1: string,
+    DEPOSITO2: string,
     TITULO: string,
   ): Promise<Patente[]> {
-    const patente = await Knex('TABELA_PATENTE')
-      .select('*')
-      .where(build => {
-        if (STATUS) {
-          build.whereLike('STATUS', `%${STATUS}%`);
-        } else {
-          if (PROTOCOLO) {
-            build.whereLike('PROTOCOLO', `${PROTOCOLO}%`);
-          } else {
-            if (DEPOSITO) {
-              build.where(
-                'DEPOSITO',
-                'LIKE',
-                `${new Date(DEPOSITO).toISOString().substring(0, 10)}%`,
-              );
-            } else {
-              if (TITULO) {
-                build.whereLike('TITULO', `%${TITULO}%`);
-              }
-            }
-          }
-        }
-      });
-    return patente;
+    let patente = Knex('TABELA_PATENTE').select('*');
+
+    if (STATUS) {
+      patente = patente.where('STATUS', 'like', `%${STATUS}%`);
+    }
+
+    if (PROTOCOLO) {
+      patente = patente.andWhere('PROTOCOLO', 'like', `${PROTOCOLO}%`);
+    }
+
+    if (TITULO) {
+      patente = patente.andWhere('TITULO', 'like', `%${TITULO}%`);
+    }
+
+    if (DEPOSITO1 && DEPOSITO2) {
+      patente = patente.andWhereBetween('DEPOSITO', [
+        new Date(DEPOSITO1).toISOString().substring(0, 10),
+        new Date(DEPOSITO2).toISOString().substring(0, 10),
+      ]);
+    }
+
+    const result = await patente;
+    return result;
   }
+
+  // async getPatenteTeste(
+  //   STATUS: string,
+  //   PROTOCOLO: number,
+  //   DEPOSITO: string,
+  //   TITULO: string,
+  // ): Promise<Patente[]> {
+  //   const patente = await Knex('TABELA_PATENTE')
+  //     .select('*')
+  //     .where(function() {
+  //       this.where('TABELA_PATENTE.STATUS', 'like', `%${STATUS}%`)
+  //         .andWhere(function() {
+  //           this.where('TABELA_PATENTE.PROTOCOLO', 'like', `%${PROTOCOLO}%`)
+  //             .orWhere('TABELA_PATENTE.TITULO', 'like', `%${TITULO}%`);
+  //         });
+  //     });
+
+  //   return patente;
+  // }
 
   async getAnuidade(
     STATUS: string,

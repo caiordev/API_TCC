@@ -6,7 +6,7 @@ export interface IPatenteRepository {
   save(patente: Patente): Promise<void>;
   updatePatente(
     ID: string,
-    PROTOCOLO: number,
+    PROTOCOLO: string,
     NATUREZA: string,
     DEPOSITO: Date,
     TITULO: string,
