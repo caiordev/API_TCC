@@ -11,19 +11,19 @@ export class DataBasePedidoRepository implements IPedidoRepository {
   async save(pedido: Pedido): Promise<void> {
     console.log('salvando pedido');
     try {
-      await Knex('TABELA_PEDIDO').insert(pedido);
+      await Knex('tabela_pedido').insert(pedido);
     } catch (error) {
       console.error('Error while saving pedido:', error);
     }
   }
 
   async getPedido(): Promise<Pedido[]> {
-    this.pedidos = await Knex('TABELA_PEDIDO');
+    this.pedidos = await Knex('tabela_pedido');
     return this.pedidos;
   }
 
   async findById(id: string): Promise<Pedido> {
-    const pedidos = await Knex('TABELA_PEDIDO');
+    const pedidos = await Knex('tabela_pedido');
     const pedido = pedidos.find(e => {
       e.ID === id;
     });
@@ -37,7 +37,7 @@ export class DataBasePedidoRepository implements IPedidoRepository {
     DATAPAG: Date,
     PROCESSOSEI: number,
   ): Promise<Pedido[]> {
-    await Knex('TABELA_PEDIDO')
+    await Knex('tabela_pedido')
       .update({
         VALOR: VALOR,
         CODIGO: CODIGO,
@@ -46,13 +46,13 @@ export class DataBasePedidoRepository implements IPedidoRepository {
       })
       .where({ ID: ID });
 
-    this.pedidos = await Knex('TABELA_PEDIDO');
+    this.pedidos = await Knex('tabela_pedido');
     return this.pedidos;
   }
 
   async deletePatente(ID: string): Promise<Pedido[]> {
-    await Knex('TABELA_PEDIDO').delete().where({ ID });
-    this.pedidos = await Knex('TABELA_PEDIDO');
+    await Knex('tabela_pedido').delete().where({ ID });
+    this.pedidos = await Knex('tabela_pedido');
     return this.pedidos;
   }
 }

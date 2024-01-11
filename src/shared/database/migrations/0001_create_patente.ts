@@ -2,7 +2,7 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   return knex.schema
-    .createTable('TABELA_PATENTE', table => {
+    .createTable('tabela_patente', table => {
       table.string('ID').primary().index();
       table.integer('PROTOCOLO').notNullable();
       table.string('NATUREZA').notNullable();
@@ -23,7 +23,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.dropTable('TABELA_PATENTE').then(() => {
+  return knex.schema.dropTable('tabela_patente').then(() => {
     console.log('# Dropped table TABELA_PATENTE');
   });
 }

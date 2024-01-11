@@ -10,19 +10,19 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
 
   async save(anuidade: Anuidade): Promise<void> {
     try {
-      await Knex('TABELA_ANUIDADE').insert(anuidade);
+      await Knex('tabela_anuidade').insert(anuidade);
     } catch (error) {
       console.error('Error while saving patente:', error);
     }
   }
 
   async getAnuidade(): Promise<Anuidade[]> {
-    this.anuidades = await Knex('TABELA_ANUIDADE');
+    this.anuidades = await Knex('tabela_anuidade');
     return this.anuidades;
   }
 
   async findById(id: string): Promise<Anuidade> {
-    const anuidades = await Knex('TABELA_ANUIDADE');
+    const anuidades = await Knex('tabela_anuidade');
     const anuidade = anuidades.find(e => {
       e.ID === id;
     });
@@ -39,7 +39,7 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
     PROCESSOSEI: number,
     STATUS: string,
   ): Promise<Anuidade[]> {
-    await Knex('TABELA_ANUIDADE')
+    await Knex('tabela_anuidade')
       .update({
         ID: ID,
         DATAORD1: DATAORD1,
@@ -52,18 +52,18 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
       })
       .where({ ID: ID });
 
-    this.anuidades = await Knex('TABELA_ANUIDADE');
+    this.anuidades = await Knex('tabela_anuidade');
     return this.anuidades;
   }
 
   async deleteAnuidade(ID: string): Promise<Anuidade[]> {
     try {
-      await Knex('TABELA_ANUIDADE').where({ ID: ID }).del();
+      await Knex('tabela_anuidade').where({ ID: ID }).del();
     } catch (error) {
       console.log('erro:', error);
       throw error;
     }
-    this.anuidades = await Knex('TABELA_ANUIDADE');
+    this.anuidades = await Knex('tabela_anuidade');
     return this.anuidades;
   }
 }

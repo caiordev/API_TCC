@@ -8,12 +8,12 @@ export class DataBasePatenteRepository implements IPatenteRepository {
   public patentes: Patente[];
 
   async getPatente(): Promise<Patente[]> {
-    this.patentes = await Knex('TABELA_PATENTE');
+    this.patentes = await Knex('tabela_patente');
     return this.patentes;
   }
 
   async findById(id: string): Promise<Patente> {
-    const patentes = await Knex('TABELA_PATENTE');
+    const patentes = await Knex('tabela_patente');
     const patente = patentes.find(e => {
       return e.ID === id;
     });
@@ -23,7 +23,7 @@ export class DataBasePatenteRepository implements IPatenteRepository {
   async save(patente: Patente): Promise<void> {
     console.log('salvando patente');
     try {
-      await Knex('TABELA_PATENTE').insert(patente);
+      await Knex('tabela_patente').insert(patente);
     } catch (error) {
       console.error('Error while saving patente:', error);
     }
@@ -44,7 +44,7 @@ export class DataBasePatenteRepository implements IPatenteRepository {
     PROCESSO: string,
     CONCESSAO: Date,
   ): Promise<Patente[]> {
-    await Knex('TABELA_PATENTE')
+    await Knex('tabela_patente')
       .update({
         PROTOCOLO: PROTOCOLO,
         NATUREZA: NATUREZA,
@@ -61,13 +61,13 @@ export class DataBasePatenteRepository implements IPatenteRepository {
       })
       .where({ ID: ID });
 
-    this.patentes = await Knex('TABELA_PATENTE');
+    this.patentes = await Knex('tabela_patente');
     return this.patentes;
   }
 
   async deletePatente(ID: string): Promise<Patente[]> {
-    await Knex('TABELA_PATENTE').where({ ID: ID }).del();
-    this.patentes = await Knex('TABELA_PATENTE');
+    await Knex('tabela_patente').where({ ID: ID }).del();
+    this.patentes = await Knex('tabela_patente');
     return this.patentes;
   }
 }

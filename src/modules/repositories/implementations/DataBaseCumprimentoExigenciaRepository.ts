@@ -9,19 +9,19 @@ export class DataBaseCumprimentoExigenciaRepository
 
   async save(cumprimentoexigencia: CumprimentoExigencia): Promise<void> {
     try {
-      await Knex('TABELA_CUMPRIMENTOEXIGENCIA').insert(cumprimentoexigencia);
+      await Knex('tabela_cumprimento_exigencia').insert(cumprimentoexigencia);
     } catch (error) {
       console.error('Error while saving patente:', error);
     }
   }
 
   async getCumprimentoExigencia(): Promise<CumprimentoExigencia[]> {
-    this.cumprimentoexigencias == (await Knex('TABELA_CUMPRIMENTOEXIGENCIA'));
+    this.cumprimentoexigencias == (await Knex('tabela_cumprimento_exigencia'));
     return this.cumprimentoexigencias;
   }
 
   async findById(ID: string): Promise<CumprimentoExigencia> {
-    const cumprimentos = await Knex('TABELA_CUMPRIMENTOEXIGENCIA');
+    const cumprimentos = await Knex('tabela_cumprimento_exigencia');
     const cumprimento = cumprimentos.find(e => e.ID === ID);
     return cumprimento;
   }
@@ -35,7 +35,7 @@ export class DataBaseCumprimentoExigenciaRepository
     PROCESSOSEI: number,
     TIPO: string,
   ): Promise<CumprimentoExigencia[]> {
-    await Knex('TABELA_CUMPRIMENTOEXIGENCIA')
+    await Knex('tabela_cumprimento_exigencia')
       .update({
         VALOR: VALOR,
         SERVICO: SERVICO,
@@ -46,16 +46,16 @@ export class DataBaseCumprimentoExigenciaRepository
       })
       .where({ ID: ID });
 
-    this.cumprimentoexigencias = await Knex('TABELA_CUMPRIMENTOEXIGENCIA');
+    this.cumprimentoexigencias = await Knex('tabela_cumprimento_exigencia');
     return this.cumprimentoexigencias;
   }
 
   async deleteCumprimentoExigencia(
     ID: string,
   ): Promise<CumprimentoExigencia[]> {
-    await Knex('TABELA_CUMPRIMENTOEXIGENCIA').delete().where({ ID: ID });
+    await Knex('tabela_cumprimento_exigencia').delete().where({ ID: ID });
 
-    this.cumprimentoexigencias = await Knex('TABELA_CUMPRIMENTOEXIGENCIA');
+    this.cumprimentoexigencias = await Knex('tabela_cumprimento_exigencia');
     return this.cumprimentoexigencias;
   }
 }

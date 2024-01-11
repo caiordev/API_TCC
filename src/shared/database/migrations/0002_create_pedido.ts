@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  return knex.schema.createTable('TABELA_PEDIDO', table => {
+  return knex.schema.createTable('tabela_pedido', table => {
     table.string('ID').primary().index();
     table
       .string('ID_PATENTE')
@@ -18,7 +18,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.dropTable('TABELA_PEDIDO').then(() => {
+  return knex.schema.dropTable('tabela_pedido').then(() => {
     console.log('# Dropped table TABELA_PEDIDO');
   });
 }

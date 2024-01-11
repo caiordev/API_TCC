@@ -5,21 +5,16 @@ import { IUserRepository } from '../IUserRepository';
 export class DataBaseUserRepository implements IUserRepository {
   public users: User[];
 
-  async getUser(): Promise<User[]> {
-    this.users = await Knex('TABELA_USER');
-    return this.users;
-  }
-
   async save(user: User): Promise<void> {
     try {
-      await Knex('TABELA_USER').insert(user);
+      await Knex('tabela_user').insert(user);
     } catch (error) {
       console.error('aconteceu esse erro aqui: ' + error);
     }
   }
 
   async findByUser(email: string): Promise<User> {
-    const users = await Knex('TABELA_USER');
+    const users = await Knex('tabela_user');
     const user = users.find(e => e.EMAIL === email);
     return user;
   }
@@ -31,7 +26,7 @@ export class DataBaseUserRepository implements IUserRepository {
     SENHA: string,
     TIPO: number,
   ): Promise<User[]> {
-    await Knex('TABELA_USER')
+    await Knex('tabela_user')
       .update({
         NOME: NOME,
         EMAIL: EMAIL,
@@ -40,14 +35,14 @@ export class DataBaseUserRepository implements IUserRepository {
       })
       .where({ ID: ID });
 
-    this.users = await Knex('TABELA_USER');
+    this.users = await Knex('tabela_user');
     return this.users;
   }
 
   async deleteUser(ID: string): Promise<User[]> {
-    await Knex('TABELA_USER').delete().where({ ID: ID });
+    await Knex('tabela_user').delete().where({ ID: ID });
 
-    this.users = await Knex('TABELA_USER');
+    this.users = await Knex('tabela_user');
     return this.users;
   }
 }

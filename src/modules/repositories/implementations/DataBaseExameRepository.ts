@@ -6,12 +6,12 @@ export class DataBaseExameRepository implements IExameRepository {
   public exames: Exame[];
 
   async getExame(): Promise<Exame[]> {
-    this.exames = await Knex('TABELA_EXAME');
+    this.exames = await Knex('tabela_exame');
     return this.exames;
   }
 
   async findById(id: string): Promise<Exame> {
-    const exames = await Knex('TABELA_EXAME');
+    const exames = await Knex('tabela_exame');
     const exame = exames.find(e => e.ID === id);
     return exame;
   }
@@ -19,7 +19,7 @@ export class DataBaseExameRepository implements IExameRepository {
   async save(exame: Exame): Promise<void> {
     console.log('Salvando exame');
     try {
-      await Knex('TABELA_EXAME').insert(exame);
+      await Knex('tabela_exame').insert(exame);
     } catch (error) {
       console.error('Error while saving exame:', error);
     }
@@ -35,7 +35,7 @@ export class DataBaseExameRepository implements IExameRepository {
     TIPO: string,
     STATUS: string,
   ): Promise<Exame[]> {
-    await Knex('TABELA_EXAME')
+    await Knex('tabela_exame')
       .update({
         VALOR: VALOR,
         SERVICO: SERVICO,
@@ -47,14 +47,14 @@ export class DataBaseExameRepository implements IExameRepository {
       })
       .where({ ID: ID });
 
-    this.exames = await Knex('TABELA_EXAME');
+    this.exames = await Knex('tabela_exame');
     return this.exames;
   }
 
   async deleteExame(ID: string): Promise<Exame[]> {
-    await Knex('TABELA_EXAME').delete().where({ ID: ID });
+    await Knex('tabela_exame').delete().where({ ID: ID });
 
-    this.exames = await Knex('TABELA_EXAME');
+    this.exames = await Knex('tabela_exame');
     return this.exames;
   }
 }
