@@ -11,8 +11,9 @@ export class DataBaseAnuidadeRepository implements IAnuidadeRepository {
   async save(anuidade: Anuidade): Promise<void> {
     try {
       await Knex('tabela_anuidade').insert(anuidade);
+      console.log('create anuidade');
     } catch (error) {
-      console.error('Error while saving patente:', error);
+      console.error('Error while saving anuidade:', error);
     }
   }
 

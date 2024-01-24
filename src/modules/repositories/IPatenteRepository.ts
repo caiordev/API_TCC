@@ -3,6 +3,7 @@ import { Patente } from '../entities/Patente';
 export interface IPatenteRepository {
   getPatente(): Promise<Patente[]>;
   findById(ID: string): Promise<Patente>;
+  findByProtocolo(PROTOCOLO: string): Promise<Patente>;
   save(patente: Patente): Promise<void>;
   updatePatente(
     ID: string,

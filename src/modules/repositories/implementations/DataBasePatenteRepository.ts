@@ -1,5 +1,3 @@
-import knex from 'knex';
-import { In } from 'typeorm';
 import { Knex } from '../../../shared/database/knex';
 import { Patente } from '../../entities/Patente';
 import { IPatenteRepository } from '../IPatenteRepository';
@@ -18,6 +16,14 @@ export class DataBasePatenteRepository implements IPatenteRepository {
       return e.ID === id;
     });
     return patente;
+  }
+
+  async findByProtocolo(PROTOCOLO: string): Promise<Patente> {
+    const testes = await Knex('tabela_patente');
+    const teste = testes.find(e => {
+      return e.PROTOCOLO === PROTOCOLO;
+    });
+    return teste;
   }
 
   async save(patente: Patente): Promise<void> {

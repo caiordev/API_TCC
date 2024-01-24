@@ -13,6 +13,7 @@ export async function seed(knex: Knex): Promise<void> {
       VALORORD: 1000,
       DATAPAGAMENTOORD: new Date('2023-03-01').toISOString().substring(0, 10),
       PROCESSOSEI: 10000001,
+      STATUS: 'pago',
     },
     {
       ID: '2',
@@ -23,6 +24,7 @@ export async function seed(knex: Knex): Promise<void> {
       VALORORD: 2000,
       DATAPAGAMENTOORD: new Date('2023-04-01').toISOString().substring(0, 10),
       PROCESSOSEI: 1234567,
+      STATUS: 'pago',
     },
     {
       ID: '3',
@@ -33,6 +35,7 @@ export async function seed(knex: Knex): Promise<void> {
       VALORORD: 1500,
       DATAPAGAMENTOORD: new Date('2023-05-01').toISOString().substring(0, 10),
       PROCESSOSEI: 12023,
+      STATUS: 'pago',
     },
   ]);
 }

@@ -20,6 +20,7 @@ import { deleteUserController } from '../../../modules/useCases/UserUseCase/Dele
 import { deletePedidoController } from '../../../modules/useCases/PedidoUseCase/DeletePedido';
 import { deletePatenteController } from '../../../modules/useCases/PatenteUseCase/DeletePatente';
 import { getByIdPatenteController } from '../../../modules/useCases/PatenteUseCase/GetByIdPatente';
+import { getByProtocoloPatenteController } from '../../../modules/useCases/PatenteUseCase/GetByProtocoloPatente';
 
 export const router = express.Router();
 
@@ -29,6 +30,10 @@ router.get('/patente', (request, response) => {
 });
 router.get('/patente/:ID', (request, response) => {
   return getByIdPatenteController.handle(request, response);
+});
+
+router.get('/patente/:PROTOCOLO', (request, response) => {
+  return getByProtocoloPatenteController.handle(request, response);
 });
 
 router.post('/patente', (request, response) => {

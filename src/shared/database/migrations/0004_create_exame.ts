@@ -7,7 +7,7 @@ export async function up(knex: Knex): Promise<void> {
       table
         .string('ID_PATENTE')
         .references('ID')
-        .inTable('TABELA_PATENTE')
+        .inTable('tabela_patente')
         .index()
         .onDelete('CASCADE')
         .unique();

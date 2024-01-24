@@ -5,8 +5,8 @@ export async function up(knex: Knex): Promise<void> {
     table.string('ID').primary().index();
     table
       .string('ID_PATENTE')
-      .references('ID')
-      .inTable('TABELA_PATENTE')
+      .references('PROTOCOLO')
+      .inTable('tabela_patente')
       .index()
       .onDelete('CASCADE');
     table.date('DATAORD1').notNullable();
@@ -15,6 +15,7 @@ export async function up(knex: Knex): Promise<void> {
     table.integer('VALORORD').notNullable();
     table.date('DATAPAGAMENTOORD').notNullable();
     table.integer('PROCESSOSEI').notNullable();
+    table.string('STATUS').notNullable();
   });
 }
 
